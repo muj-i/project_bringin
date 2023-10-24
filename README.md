@@ -4,7 +4,7 @@
 
 A Flutter app that integrates two APIs: JSONPlaceholder API for displaying user data and PokéAPI for displaying Pokémon data. The app uses GetX for state management and includes features such as a home screen, user posts and comments screen, a search screen for Pokémon, and Pokémon details screen.
 
-[![wakatime](https://wakatime.com/badge/user/018b2382-65f6-43ab-b306-3e0645f77bd8/project/018b587d-4799-4278-bc9f-d8d3c076fb72.svg)](https://wakatime.com/projects/project_bringin?start=2023-10-18&end=2023-10-24)
+[![wakatime](https://wakatime.com/badge/user/018b2382-65f6-43ab-b306-3e0645f77bd8/project/018b587d-4799-4278-bc9f-d8d3c076fb72.svg)](https://wakatime.com/@018b2382-65f6-43ab-b306-3e0645f77bd8/projects/jcxgqdnchp?start=2023-10-18&end=2023-10-24)
 
 ## Features
 
