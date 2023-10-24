@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:project_bringin/presentation/state_holders/comments_controller.dart';
 import 'package:project_bringin/presentation/state_holders/users_controller.dart';
 import 'package:project_bringin/presentation/ui/screens/home/posts_list_screen.dart';
-import 'package:project_bringin/presentation/ui/widgets/appbar_icon.dart';
-import 'package:project_bringin/presentation/ui/widgets/user_card.dart';
+import 'package:project_bringin/presentation/ui/widgets/appbar_theme_change_icon.dart';
+import 'package:project_bringin/presentation/ui/widgets/home/user_card.dart';
 
 class UserListScreen extends StatefulWidget {
   const UserListScreen({super.key});
@@ -18,22 +18,24 @@ class _UserListScreenState extends State<UserListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Screen'),
+        title: const Text('User List Screen'),
         centerTitle: false,
-        actions: const [AppBarIcon()],
+        actions: const [AppBarThemeChangeIcon()],
       ),
       body: GetBuilder<UsersController>(
         builder: (usersController) {
-          return Visibility(
-            visible: usersController.getUsersInProgress == false,
-            replacement: const Center(
-              child: CircularProgressIndicator(),
-            ),
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                final user = usersController.usersList[index];
-                final userPost =
-                    Get.find<CommentsController>().commentsList[index];
+          if (usersController.getUsersInProgress == false) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              setState(() {});
+            });
+          }
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              final usersList = usersController.usersList;
+              final commentsList = Get.find<CommentsController>().commentsList;
+              if (index < usersList.length && index < commentsList.length) {
+                final user = usersList[index];
+                final userPost = commentsList[index];
                 return InkWell(
                   borderRadius: BorderRadius.circular(16),
                   onTap: () => Get.to(() => PostListScreen(
@@ -50,9 +52,10 @@ class _UserListScreenState extends State<UserListScreen> {
                     phone: 'Phone: ${user.phone ?? ''}',
                   ),
                 );
-              },
-              itemCount: usersController.usersList.length,
-            ),
+              }
+              return null;
+            },
+            itemCount: usersController.usersList.length,
           );
         },
       ),

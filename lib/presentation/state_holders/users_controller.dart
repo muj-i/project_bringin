@@ -19,13 +19,15 @@ class UsersController extends GetxController {
     final NetworkResponse response = await NetworkCaller.getRequest(Urls.users);
 
     _getUsersInProgress = false;
-    update();
+     update();
     if (response.isSuccess) {
       var data = response.responseBody as List<dynamic>;
       _usersList.clear();
       for (Map<String, dynamic> usersMap in data) {
         _usersList.add(UsersModel.fromJson(usersMap));
       }
+       
+     
     } else {
       _errorMessage = 'Users data fetch failed!';
     }

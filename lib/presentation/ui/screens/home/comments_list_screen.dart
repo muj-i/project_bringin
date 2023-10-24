@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_bringin/data/models/comments_model.dart';
 import 'package:project_bringin/presentation/state_holders/comments_controller.dart';
-import 'package:project_bringin/presentation/ui/widgets/comment_card.dart';
+import 'package:project_bringin/presentation/ui/widgets/home/comment_card.dart';
 
 class CommentListScreen extends StatefulWidget {
   const CommentListScreen(

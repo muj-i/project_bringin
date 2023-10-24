@@ -16,9 +16,9 @@ class BottomNavScreen extends StatefulWidget {
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
   int _selectedScreenIndex = 0;
-  final List<Widget> _screens = const [
-    UserListScreen(),
-    SearchScreen(),
+  final List<Widget> _screens = [
+    const UserListScreen(),
+    const SearchScreen(),
   ];
 
   @override
@@ -28,24 +28,9 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
       Get.find<PostsController>().getPostsList();
       Get.find<CommentsController>().getCommentsList();
     });
+   
     super.initState();
   }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _checkInternetConnectivity();
-  // }
-
-  // Future<void> _checkInternetConnectivity() async {
-  //   final connectivityResult = await (Connectivity().checkConnectivity());
-  //   if (connectivityResult == ConnectivityResult.mobile ||
-  //       connectivityResult == ConnectivityResult.wifi) {
-  //     setState(() {
-  //       _selectedScreenIndex = 0;
-  //     });
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {

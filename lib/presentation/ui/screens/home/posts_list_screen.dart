@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:project_bringin/data/models/posts_model.dart';
 import 'package:project_bringin/presentation/state_holders/posts_controller.dart';
 import 'package:project_bringin/presentation/ui/screens/home/comments_list_screen.dart';
-import 'package:project_bringin/presentation/ui/widgets/post_card.dart';
+import 'package:project_bringin/presentation/ui/widgets/home/post_card.dart';
 
 class PostListScreen extends StatefulWidget {
   const PostListScreen(

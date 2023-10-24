@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/utils.dart';
 import 'package:http/http.dart';
 import 'package:project_bringin/data/services/network_response.dart';
 
@@ -15,6 +18,13 @@ class NetworkCaller {
       if (response.statusCode == 200) {
         return NetworkResponse(
             true, response.statusCode, jsonDecode(response.body));
+      } else if (response.statusCode == 404) {
+        Get.snackbar(
+          'Ops!',
+          'No Data Found',
+          backgroundColor: Colors.red.withOpacity(.2),
+          snackPosition: SnackPosition.TOP,
+        );
       } else {
         return NetworkResponse(false, response.statusCode, null);
       }
